@@ -1,4 +1,6 @@
-//http://cxsjsx.openjudge.cn/hw202215/A/
+// http://cxsjsx.openjudge.cn/hw202215/A/
+// POJ223
+// 状态转移dp
 #include<iostream>
 #include<cstring>
 #define MAX 251
