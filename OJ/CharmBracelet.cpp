@@ -1,4 +1,5 @@
-//http://cxsjsx.openjudge.cn/hw202215/C/
+// http://cxsjsx.openjudge.cn/hw202215/C/
+// POJ 7113
 // 普通的滚动数组空间优化的01背包
 #include<iostream>
 #include<cstring>
