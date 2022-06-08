@@ -1,4 +1,6 @@
-//http://cxsjsx.openjudge.cn/hw202215/B/
+// http://cxsjsx.openjudge.cn/hw202215/B/
+// POJ 4976
+// 01背包再附加一点内容
 #include<iostream>
 #include<cstring>
 #include<algorithm>
