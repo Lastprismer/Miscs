@@ -24,3 +24,19 @@ int main()
 		}
 	cout << dp[t] << endl;
 }
+
+// 写一下普通的状态转移吧，不然之后忘了优化前的了
+/*
+int main()
+{
+	int n, t;
+	cin >> n >> t;
+	for (int i = 1; i <= n; i++)
+		cin >> num[i], dp[i][num[i]] = 1;
+	for (int i = 1; i < n; i++)
+		for (int j = 1; j <= t; j++)
+			dp[i][j] += dp[i - 1][j] + (j > num[i]) ? dp[i - 1][j - num[i]] : 0; // dp[i][j]分成两部分：dp[i-1][j]（不算上当前的，之前的就已经合成的部分）+带上当前的的部分
+	cout << dp[n][t] << endl;
+}
+
+*/
