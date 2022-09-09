@@ -10,7 +10,14 @@ $$
 
 那么
 
-![](https://github.com/Lastprismer/Miscs/blob/main/%E6%95%B0%E7%AE%97/Assets/MommyTalk1662475369768.svg)
+$$
+T(n)=\left\{
+\begin{array}{lcl}
+\Theta(n^{log_ba}),    &&f(n)=O(n^{log_ba}-\epsilon)\\
+\Theta(n^{log_ba}log^kn),&&f(n)=\Theta(n^{log_ba}log^{k+1}n),\ k\geqslant 0\\
+\Theta(f(n)),&&f(n)=\Omega(n^{log_ba}+\epsilon)\ (*)\\
+\end{array}\right.
+$$
 
 $(*)$指代的条件：$\exist c<1,\ n_0>0,\ s.t.\forall n>n_0,\ af(\frac{n}{b})\leqslant cf(n)$
 
