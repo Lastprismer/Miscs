@@ -1,4 +1,4 @@
-// http://cxsjsx.openjudge.cn/practise2022algo/04A/statistics/
+// http://cxsjsx.openjudge.cn/practise2022algo/04A
 // 20775
 // 没啥难度，枚举+unique+二分查找
 #include <iostream>
