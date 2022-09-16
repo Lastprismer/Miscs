@@ -4,7 +4,7 @@
 
   令 $F(x)$：$x$ 是乌龟，$G(x)$：$x$ 是兔子，$H(x,y)$：$x$ 比 $y$ 跑得快
 
-  命题符号华为：$\exist x \exist y(F(x) \wedge G(y) \wedge H(x,y))$
+  命题符号化为：$\exist x \exist y(F(x) \wedge G(y) \wedge H(x,y))$
 
 
 

@@ -22,4 +22,3 @@ $$
 \therefore \neg(p \wedge q) \Leftrightarrow \neg p \vee \neg q, \\
  \neg(p \vee q) \Leftrightarrow \neg p \wedge \neg q.
 $$
-

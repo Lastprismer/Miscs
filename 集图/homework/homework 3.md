@@ -44,7 +44,7 @@ $(3)\ P\{\varnothing\}=PP(\varnothing),\ \therefore (3)=\{\varnothing, \{\varnot
 
    由证明过程可知：$(A-B)-C \subseteq A-B \subseteq A-(B-C)$
 
-   $\therefore (A - B \subseteq \sim C) \wedge (B \cap C= \varnothing) $ 时成立。
+   $\therefore (A - B \subseteq \sim C) $ 时成立。
 
    对该式进行化简：设全集为 $E, x \in E$（过程稍简略）
 
@@ -54,12 +54,14 @@ $(3)\ P\{\varnothing\}=PP(\varnothing),\ \therefore (3)=\{\varnothing, \{\varnot
 
    $\therefore \text{化为析取式，用归结法得 }x \notin A \vee x \notin C = 1$
 
-   $\therefore (A \cap C = \varnothing) \vee (B \cap C = \varnothing)$.
+   $\therefore A \cap C = \varnothing$.
 
    
 
-   原始式子化为：$(A - B) \cup (A - C) = (A - B) \cup (A \cap C), \text{ 此时 } A - C = A, A \cap C = \varnothing$，必要性得证。
+   $(A-B)-C = (A-B) \cap \sim C = A \cap \sim (B \cup C) = (A-B)\cap (A-C)$
 
+   原始式子化为：$(A - B) \cap (A - C) = (A - B) \cup (A \cap C), \text{ 此时 } A - C = A, A \cap C = \varnothing$，必要性得证。
+   
    
 
 **1.14** 设 $A,B,C$ 为任意的集合，已知 $A \cap B = A \cap C$ 且 $\sim A \cap B = \sim A \cap C$，证明 $B=C$
@@ -69,7 +71,6 @@ B & = E \cap B = (A \cup \sim A) \cap B = (A \cap B) \cup (\sim A \cap B) \\
 & =(A \cap C) \cup (\sim A \cap C) = (A \cup \sim A) \cap C = E \cap C = C
 \end{align}
 $$
-
 
 **1.20** 设 $A,B,C$ 为三个集合，已知 $(A \cap C) \subseteq (B \cap C),\ (A \cap \sim C) \subseteq (B \cap \sim C)$，证明 $A \subseteq B$
 $$
