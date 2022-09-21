@@ -6,7 +6,7 @@
 原理：从主串头开始，依次选取与模拟串长度相同的字串，逐个字符匹配；如果匹配失败，则检索下一个字串。
 假设主串长m，字串长n：
 
-<table>
+<table style="text-align: center;">
 <tr>
     <th>时间复杂度</th>
     <th><small>匹配成功</small></th>
