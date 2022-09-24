@@ -275,11 +275,14 @@ swap:
 
 ### 加载有效地址 leaq
 
-* `movq`的变形，将内存有效地址写入寄存器，为后面的内存引用产生指针
+* `movq`的变形，将内存有效地址写入**寄存器**，为后面的内存引用产生指针
 * 也可以简洁的描述普通的算术操作
   * 例如：`%rdx`值为x，`%rsi`值为k，则 `leaq imm(%rdx,%rsi,9), %rax`会将寄存器`%rax`的值设置为`imm+x+9*k`
   * 可用于简化乘法和加法指令
   * 也有`leal`，用于32位地址计算和传送
+* 没有溢出（在流控制中不产生溢出标志）
+
+
 
 ### 更多算数和逻辑指令
 
@@ -287,3 +290,73 @@ swap:
 
 * 有b, w, l, q四种，操作不同的大小
 
+
+
+### 特殊的算术操作
+
+x86-64对128位（16字节）数的操作提供有限的支持，为 **八字**（oct word）
+
+<table>
+    <tr>
+        <th>指令</th>
+        <th>效果</th>
+        <th>描述</th>
+    </tr>
+    <tr>
+        <td>imulq S<br>mulq S</td>
+        <td>R[%rdx]:R[%rdx] &#8592 S * R[%rax] <br> R[%rdx]:R[%rax] &#8592 S * R[%rax]</td>
+        <td>有符号全乘法 <br> 无符号全乘法</td>
+    </tr>
+    <tr>
+        <td>clto</td>
+        <td>R[%rdx]:R[%rax] &#8592 符号扩展（R[%rax]）</td>
+        <td>转换为八字</td>
+    </tr>
+    <tr>
+        <td>idivq S</td>
+        <td>R[%rdx] &#8592 R[%rdx]:R[%rax] mod S <br> R[%rdx] &#8592 R[%rdx]:R[%rax] / S</td>
+        <td>有符号除法</td>
+    </tr>
+    <tr>
+        <td>idivq S</td>
+        <td>R[%rdx] &#8592 R[%rdx]:R[%rax] mod S <br> R[%rdx] &#8592 R[%rdx]:R[%rax] / S</td>
+        <td>无符号除法</td>
+    </tr>
+</table>
+
+* imulq有两种：双操作数时，为从两个64位操作数中产生一个64位乘积；单操作数时（以及mulq，无符号乘法），一个参数必须在寄存器 %rax 中，而另一个作为指令的源操作数给出。乘积存放在寄存器%rdx（高64位）和%rax（低64位）中。
+* 其他同理
+* 去实际试一下下面两个：
+
+```c
+#include <inttypes.h>
+typedef unsigned ___int128 uint128_t;
+void store_uprod (uint128_t *dest, uint64_t x, uint64_t y)
+{
+    *dest = x * (uint128_t) y;
+}
+```
+
+（注意大小端带来的区别）
+
+<img src=".\Images\Int128 Asm.png" style="zoom:50%;" />
+
+
+
+算术运算表中没有除法或取模操作，这些操作是由单操作数除法指令来提供的。
+
+* 有符号除法指令过idivl将寄存器%rdx（高64 位）、%rax（低64位）中的128位数作为被除数，而除数作为指令的操作数给出
+* 商存储在%rax中，余数存储在%rdx中
+* %rdx的位应该设置为全0（无符号运算）或者%rax 的符号位（有符号运算）
+
+```c
+void remdiv (long x, long y, long *qp, long *rp)
+{
+    long q = x / y;
+    long r = x % y;
+    *qp = q;
+    *rp = r;
+}
+```
+
+<img src=".\Images\64div Asm.png" style="zoom:50%;" />
